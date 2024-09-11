@@ -45,10 +45,14 @@ def node_llm_with_tools(state: MessagesState):
 
 # 4. Define the graph
 def create_graph():
+    # Instantiate the graph, initializing with the graph state
     graph = StateGraph(MessagesState)
+    # Add the nodes
     graph.add_node("Chat Node", node_llm_with_tools)
+    # Add the nodes
     graph.add_edge(START, "Chat Node")
     graph.add_edge("Chat Node", END)
+    # Compile the graph, turning it into a LangChain Runnable
     graph = graph.compile()
 
     return graph
@@ -58,11 +62,11 @@ if __name__ == "__main__":
     graph = create_graph()
 
     # #save graph schema
-    # with open("figures/simple_chat_chain_with_tools.png", "wb") as f:
-    #     f.write(graph.get_graph().draw_mermaid_png())
+    with open("figures/simple_chat_chain_with_tools.png", "wb") as f:
+        f.write(graph.get_graph().draw_mermaid_png())
 
     # With this message, the model will produce a response with imortant content in "content".
-    # initial_message = {"messages": HumanMessage(content="Olá, tudo bem?", name="Marianna")}
+    initial_message = {"messages": HumanMessage(content="Olá, tudo bem?", name="Marianna")}
     # With this message, the model will produce a response with important content in "additional_kwargs" > "tool_calls"
     initial_message = {"messages": HumanMessage(content="Qual é a área de um triângulo de base = 4cm e altura igual a 10 cm?", name="Marianna")}
 
