@@ -51,7 +51,7 @@ def create_graph():
     # Add the nodes
     graph.add_node("Chat Node", node_llm_with_tools)
     graph.add_node("tools", ToolNode([triangle_area]))
-    # Add the nodes
+    # Add the edges
     graph.add_edge(START, "Chat Node")
     graph.add_conditional_edges(source="Chat Node", path=tools_condition)
     graph.add_edge("tools", END)

@@ -49,7 +49,7 @@ def create_graph():
     graph = StateGraph(MessagesState)
     # Add the nodes
     graph.add_node("Chat Node", node_llm_with_tools)
-    # Add the nodes
+    # Add the edges
     graph.add_edge(START, "Chat Node")
     graph.add_edge("Chat Node", END)
     # Compile the graph, turning it into a LangChain Runnable
