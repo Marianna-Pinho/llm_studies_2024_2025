@@ -78,6 +78,7 @@ def test_state_reducers():
     except Exception as e:
         print("Error:", e)
 
+
 def test_tricks_with_reducers():
     initial_messages = [
         AIMessage(content="Olá, como posso te ajudar hoje?", name="Model", id=1),
