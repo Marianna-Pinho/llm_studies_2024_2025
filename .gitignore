@@ -1,3 +1,5 @@
 .env
 langchain-academy
 src/databases
+notebooks/data
+notebooks/langchain/data
